@@ -8,7 +8,7 @@ import javax.sound.sampled.*;
 import org.json.simple.*;
 import org.json.simple.parser.*;
 
-/*
+/* 
     To compile: javac SpotifyLikeApp.java
     To run: java SpotifyLikeApp
  */
@@ -40,7 +40,7 @@ public class SpotifyLikeAppExampleCode {
     */
 
   private static String basePath =
-    "C:/Users/josec/OneDrive/JavaCIS 084/Spotify/demo/src/main/java/com/example/spotify-example-code2";
+  "C:/Users/josec/OneDrive/JavaCIS 084/Spotify/demo/src/main/java/com/example";
 
   // "main" makes this class a java app that can be executed
   public static void main(final String[] args) {
@@ -93,9 +93,14 @@ public class SpotifyLikeAppExampleCode {
         break;
       case "s":
         System.out.println("-->Search by title<--");
+              Scanner scanner = new Scanner(System.in);
+              System.out.print("Enter the title to search: ");
+              searchTerm = scanner.nextLine().toLowerCase();
+              searchByTitle(library, searchTerm);
         break;
       case "l":
         System.out.println("-->Library<--");
+                showLibrary(library);
         break;
       case "p":
         System.out.println("-->Play<--");
@@ -182,4 +187,37 @@ public class SpotifyLikeAppExampleCode {
 
     return jsonData;
   }
+
+  //search for title
+public static void searchByTitle(JSONArray library, String searchTerm) {
+  boolean found = false;
+  for (Object obj : library) {
+      JSONObject jsonObject = (JSONObject) obj;
+      String title = (String) jsonObject.get("name");
+      if (title != null && title.toLowerCase().contains(searchTerm.toLowerCase())) {
+          System.out.println("Title: " + title);
+          System.out.println("Artist: " + jsonObject.get("artist"));
+          System.out.println("Filename: " + jsonObject.get("filename"));
+          found = true;
+      }
+  }
+  if (!found) {
+      System.out.println("No matching songs found.");
+  }
 }
+
+public static void showLibrary(JSONArray library) {
+  System.out.println("---- Library ----");
+  for (Object obj : library) {
+      JSONObject jsonObject = (JSONObject) obj;
+      String title = (String) jsonObject.get("name");
+      String artist = (String) jsonObject.get("artist");
+      String filename = (String) jsonObject.get("filename");
+      System.out.println("Title: " + title);
+      System.out.println("Artist: " + artist);
+      System.out.println("Filename: " + filename);
+      System.out.println("------------");
+  }
+}
+}
+
