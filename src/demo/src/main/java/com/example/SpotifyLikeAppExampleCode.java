@@ -40,7 +40,7 @@ public class SpotifyLikeAppExampleCode {
     */
 
   private static String basePath =
-  "C:/Users/josec/OneDrive/JavaCIS 084/Spotify/demo/src/main/java/com/example";
+  "C:\\Users\\josec\\OneDrive\\Documents\\Github\\spotify_music\\src\\demo\\src\\main\\java\\com\\example";
 
   // "main" makes this class a java app that can be executed
   public static void main(final String[] args) {
@@ -95,7 +95,7 @@ public class SpotifyLikeAppExampleCode {
         System.out.println("-->Search by title<--");
               Scanner scanner = new Scanner(System.in);
               System.out.print("Enter the title to search: ");
-              searchTerm = scanner.nextLine().toLowerCase();
+              String searchTerm = scanner.nextLine().toLowerCase();
               searchByTitle(library, searchTerm);
         break;
       case "l":
