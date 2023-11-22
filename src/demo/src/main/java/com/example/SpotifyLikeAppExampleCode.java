@@ -76,6 +76,7 @@ public class SpotifyLikeAppExampleCode {
     System.out.println("[H]ome");
     System.out.println("[S]earch by title");
     System.out.println("[L]ibrary");
+    System.out.println("[F]avorites");
     System.out.println("[P]lay");
     System.out.println("[Q]uit");
 
@@ -105,6 +106,9 @@ public class SpotifyLikeAppExampleCode {
       case "p":
         System.out.println("-->Play<--");
         play(library);
+        break;
+      case "t":
+        System.out.println("-->Favorites<--");
         break;
       case "q":
         System.out.println("-->Quit<--");
